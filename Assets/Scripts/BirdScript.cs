@@ -11,6 +11,17 @@ public class BirdScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKey ("right")) {
+			transform.Translate (0.2f, 0f, 0f);
+		}
+		if (Input.GetKey ("left")) {
+			transform.Translate (-0.2f, 0f, 0f);
+		}
+		if (Input.GetKey ("up")) {
+			transform.Translate (0f, 0.2f, 0f);
+		}
+		if (Input.GetKey ("down")) {
+			transform.Translate (0f, -0.2f, 0f);
+		}
 	}
 }

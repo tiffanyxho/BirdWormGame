@@ -66,5 +66,9 @@ public class BirdScript : MonoBehaviour {
 			alive_worm.SetActive (false);
 			dead_worm.SetActive (true);
 		}
+		if (bird_hit.gameObject.name == "launchtree") {
+			alive_worm.SetActive (true);
+			dead_worm.SetActive (false);
+		}
 	}
 }

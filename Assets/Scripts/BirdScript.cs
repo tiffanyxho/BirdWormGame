@@ -8,6 +8,7 @@ public class BirdScript : MonoBehaviour {
 	public int count;
 	public string message;
 	private bool finished;
+	public GameObject alive_worm;
 
 	// Use this for initialization
 	void Start () {
@@ -16,25 +17,14 @@ public class BirdScript : MonoBehaviour {
 		count = 25;
 		message = "This is fun!";
 		finished = false;
-
-		Debug.Log ("The distance value is " + distance);
-		Debug.Log ("The count is " + count);
-		Debug.Log (message);
-		Debug.Log ("The value of finished is " + finished);
-
-		if (count == 0) {
-			Debug.Log ("The variable count is 0.");	
-		} else {
-		
-		}
 */
-		int num;
-		num = double_it (5);
-		Debug.Log (num);
 	}
 	
-	// Update is called once per frame
+	/**
+	 *  Moves bird when arrow keys are pressed
+	 */
 	void Update () {
+		// Bird is moved using the arrow keys
 		if (Input.GetKey ("right")) {
 			Flip ("right");
 			transform.Translate (0.2f, 0f, 0f);
@@ -51,6 +41,9 @@ public class BirdScript : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Flips the direction the bird is facing based on the arrow key pressed
+	 */
 	public void Flip(string direction) {
 		var scale = transform.localScale;
 
@@ -66,7 +59,9 @@ public class BirdScript : MonoBehaviour {
 		transform.localScale = scale;
 	}
 
-	int double_it(int input_num) {
-		return input_num * 2;
+	void OnCollisionEnter2D (Collision2D bird_hit) {
+		if (bird_hit.gameObject.name == "theworm") {
+			alive_worm.SetActive (false);
+		}
 	}
 }

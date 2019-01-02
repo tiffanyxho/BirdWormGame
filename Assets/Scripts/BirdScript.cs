@@ -9,6 +9,7 @@ public class BirdScript : MonoBehaviour {
 	public string message;
 	private bool finished;
 	public GameObject alive_worm;
+	public GameObject dead_worm;
 
 	// Use this for initialization
 	void Start () {
@@ -60,8 +61,10 @@ public class BirdScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D bird_hit) {
+		// Hides alive worm and shows dead worm
 		if (bird_hit.gameObject.name == "theworm") {
 			alive_worm.SetActive (false);
+			dead_worm.SetActive (true);
 		}
 	}
 }
